@@ -1,23 +1,26 @@
 import express from 'express'
 import { Router } from 'express'
+import axios from 'axios';
 
+const OMDB_URL = "http://www.omdbapi.com/";
 
 //searchMovies
-const searchMovies = (req,res) =>{
+ export const searchMovies =async (req,res) =>{
  const {title} = req.query
 
  if (!title){
-    return res.status(400).json({ "error": "Title query parameter is required"});
+    return res.status(400)
+    .json({ "error": "Title query parameter is required"});
 
 
  }
 
  try{
-    const response =await axios.get(OMDB_URL{
-        param:{
+    const response = await axios.get(OMDB_URL, {
+        params :{
             s:title,
-            apikey: OMDB_API_KEY,
-        },
+            apikey: process.env.OMDB_API_KEY,
+        }
     });
 
     res.json(response.data);
@@ -30,7 +33,7 @@ const searchMovies = (req,res) =>{
 
 //getMovieDetails 
 
-const getMovieDetails = (req,res) =>{
+ export const getMovieDetails =async (req,res) =>{
   const {id} = req.params;
 
   try{
@@ -39,7 +42,9 @@ const getMovieDetails = (req,res) =>{
             i :id,
             apikey: process.env.OMDB_API_KEY,
         },
+        
     });
+     res.json(response.data);
   }catch(error){
 
     res.status(500).json({
@@ -50,7 +55,4 @@ const getMovieDetails = (req,res) =>{
 };
 
 //exporting functions
-module.exports ={
-    searchMovies,
-    getMovieDetails,
-};
+export default {searchMovies, getMovieDetails}

@@ -1,13 +1,14 @@
-import { configDotenv } from "dotenv";
-import { movieRoutes } from "./routes/movieRoutes";
+import { dotenv } from "dotenv";
+import express from 'express';
+import { router } from "./routes/movieRoutes.js";
 
-import express from 'express'
+dotenv.config();
 
 //Set up your Express application instance.
 const app = express()
 app.use(express.json());
 
-app.use("./api", movieRoutes);
+app.use("/api", movieRoutes);
 
 
  //server should listen on a port
