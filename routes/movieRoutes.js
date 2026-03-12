@@ -1,6 +1,5 @@
-import express from 'express'
-import { Router } from 'express'
-import {searchMovies, getMovieDetails} from '../controllers/movieController'
+import express from 'express';
+import {searchMovies, getMovieDetails} from '../controllers/movieController.js'
 
 
 

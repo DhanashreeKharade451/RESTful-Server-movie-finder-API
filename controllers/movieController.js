@@ -1,12 +1,11 @@
-import express from 'express'
-import { Router } from 'express'
+
 import axios from 'axios';
 
 const OMDB_URL = "http://www.omdbapi.com/";
 
 //searchMovies
  export const searchMovies =async (req,res) =>{
- const {title} = req.query
+ const {title} = req.query;
 
  if (!title){
     return res.status(400)
@@ -20,7 +19,7 @@ const OMDB_URL = "http://www.omdbapi.com/";
         params :{
             s:title,
             apikey: process.env.OMDB_API_KEY,
-        }
+        },
     });
 
     res.json(response.data);
@@ -54,5 +53,4 @@ const OMDB_URL = "http://www.omdbapi.com/";
   }
 };
 
-//exporting functions
-export default {searchMovies, getMovieDetails}
+
