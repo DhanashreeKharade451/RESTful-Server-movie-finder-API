@@ -29,7 +29,6 @@ const OMDB_URL = "http://www.omdbapi.com/";
     });
  }
 };
-
 //getMovieDetails 
 
  export const getMovieDetails =async (req,res) =>{
