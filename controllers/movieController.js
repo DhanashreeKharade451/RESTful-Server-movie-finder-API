@@ -36,7 +36,7 @@ const OMDB_URL = "http://www.omdbapi.com/";
 
   try{
     const response = await axios.get(OMDB_URL, {
-        param: {
+        params: {
             i :id,
             apikey: process.env.OMDB_API_KEY,
         },
